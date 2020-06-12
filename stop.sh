@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker stop AutoBeton
-docker rm AutoBeton
+docker stop nginx
+docker rm nginx
 
