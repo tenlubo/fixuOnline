@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker pull tenlubo/auto-beton:latest
+docker pull tenlubo/nginx-demo-bikefresco:latest
 
