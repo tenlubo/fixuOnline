@@ -77,13 +77,12 @@ services:
             JAVA_OPTS: "
                 -Xms512m
                 -Xmx512m
-                -Dalfresco.host=demo.bikefresco.com
-                -Dalfresco.port=443
+                -Dalfresco.host=alfresco
+                -Dalfresco.port=8080
                 -Dalfresco.context=alfresco
-                -Dalfresco.protocol=https
+                -Dalfresco.protocol=http
                 "
-        ports:
-            - ${EXTERNAL_SHARE_PORT}:8080
+
         networks:
             - alfresco-net
 
