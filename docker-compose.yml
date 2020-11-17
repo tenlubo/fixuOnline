@@ -10,6 +10,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - alfresco
+    links:
+      - alfresco
+      - share
     networks:
       - alfresco-net
 
