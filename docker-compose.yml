@@ -10,9 +10,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    links:
-      - alfresco
-      - share
     networks:
       - alfresco-net
 
