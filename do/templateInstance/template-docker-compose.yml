@@ -1,0 +1,123 @@
+version: "3.7"
+services:
+    alfresco:
+        image: tenlubo/bikes-alfresco-platform:latest
+        environment:
+            JAVA_OPTS: "
+                -Ddb.driver=com.mysql.jdbc.Driver
+                -Ddb.username=alfresco
+                -Ddb.password=alfresco
+                -Ddb.pool.initial=10
+                -Ddb.pool.max=100
+                -Ddb.name=${EXTERNAL_DATABASE_NAME}
+                -Ddb.host=mariadb
+                -Ddb.port=3306
+                -Ddb.url=\"jdbc:mysql://mariadb:3306/${EXTERNAL_DATABASE_NAME}?useUnicode=true&characterEncoding=UTF-8\"
+                -Dsolr.host=solr6
+                -Dsolr.port=8983
+                -Dsolr.secureComms=none
+                -Dsolr.base.url=/solr
+                -Dindex.subsystem.name=solr6
+                -Dshare.host=127.0.0.1
+                -Dshare.port=80
+                -Dalfresco.host=localhost
+                -Dalfresco.port=8080
+                -Daos.baseUrlOverwrite=http://localhost:8080/alfresco/aos
+                -Dmessaging.broker.url=\"failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true\"
+                -Ddeployment.method=DOCKER_COMPOSE
+
+                -Dsmart.folders.enabled=true
+                -Dsmart.folders.config.type.templates.qname.filter=inv:invoiceFolder
+
+                -Dooo.enabled=false
+                -Djodconverter.enabled=true
+
+                -Dlocal.transform.service.enabled=true
+                -DlocalTransform.pdfrenderer.url=http://alfresco-pdf-renderer:8090/
+                -DlocalTransform.imagemagick.url=http://imagemagick:8090/
+                -DlocalTransform.libreoffice.url=http://libreoffice:8090/
+                -DlocalTransform.tika.url=http://tika:8090
+                -DlocalTransform.misc.url=http://transform-misc:8090/
+
+                -Dlegacy.transform.service.enabled=true
+                -Dalfresco-pdf-renderer.url=http://alfresco-pdf-renderer:8090/
+                -Djodconverter.url=http://libreoffice:8090/
+                -Dimg.url=http://imagemagick:8090/
+                -Dtika.url=http://tika:8090/
+                -Dtransform.misc.url=http://transform-misc:8090/
+
+                -Dalfresco_user_store.adminusername=lubo
+                -Dauthentication.chain=alfinst:alfrescoNtlm,ldap1:ldap
+                -Dsynchronization.synchronizeChangesOnly=true
+                -Dsynchronization.syncWhenMissingPeopleLogIn=true
+                -Dsynchronization.syncOnStartup=true
+                -Dsynchronization.import.cron=\"${ALFRESCO_SYNC_IMPORT_CRON}\"
+                -Dntlm.authentication.sso.enabled=false
+
+                -Dsample.site.disabled=true
+                -Dcsrf.filter.enabled=false
+                -Xms2048m -Xmx2048m
+                "
+        networks:
+            - alfresco-net
+        volumes:
+            - ../env/${LDAP_PROPERTIES_FOLDER}:/usr/local/tomcat/shared/classes/alfresco/extension/subsystems/Authentication/ldap/ldap1/
+            - bikes-acs-volume:/usr/local/tomcat/alf_data/
+            - bikes-log-volume:/usr/local/tomcat/logs
+
+    share:
+        image: tenlubo/bikes-alfresco-share:latest
+        environment:
+            REPO_HOST: "alfresco"
+            REPO_PORT: "8080"
+            JAVA_OPTS: "
+                -Xms512m
+                -Xmx512m
+                -Dalfresco.host=localhost
+                -Dalfresco.port=8080
+                -Dalfresco.context=alfresco
+                -Dalfresco.protocol=http
+                "
+        ports:
+            - ${EXTERNAL_SHARE_PORT}:8080
+        networks:
+            - alfresco-net
+
+    solr6:
+        image: alfresco/alfresco-search-services:2.0.0.1
+        environment:
+            #Solr needs to know how to register itself with Alfresco
+            - SOLR_ALFRESCO_HOST=alfresco
+            - SOLR_ALFRESCO_PORT=8080
+            #Alfresco needs to know how to call solr
+            - SOLR_SOLR_HOST=solr6
+            - SOLR_SOLR_PORT=8983
+            #Create the default alfresco and archive cores
+            - SOLR_CREATE_ALFRESCO_DEFAULTS=alfresco,archive
+            #HTTP by default
+            - ALFRESCO_SECURE_COMMS=none
+            - "SOLR_JAVA_MEM=-Xms1024m -Xmx1024m"
+        ports:
+            - ${EXTERNAL_SOLR_PORT}:8983 #Browser port
+        networks:
+            - alfresco-net
+        volumes:
+            - bikes-ass-volume:/opt/alfresco-search-services/contentstore
+            - bikes-ass-volume:/opt/alfresco-search-services/data
+
+
+networks:
+    alfresco-net:
+        external:
+            name: alfresco_commons_commons-net
+
+volumes:
+    bikes-acs-volume:
+        external:
+            name: bikes-acs-${ALF_PROJECT_NAME}-volume
+    bikes-ass-volume:
+        external:
+            name: bikes-ass-${ALF_PROJECT_NAME}-volume
+    bikes-log-volume:
+        external:
+            name: bikes-log-${ALF_PROJECT_NAME}-volume

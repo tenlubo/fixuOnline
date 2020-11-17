@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  process:
+    image: alfresco/process-services:${ALF_PROCESS_VERSION}
+    environment:
+      ACTIVITI_CSRF_DISABLED: 'true'
+      ACTIVITI_CORS_ENABLED: 'true'
+    volumes:
+      - type: bind
+        source: ./license/activiti.lic
+        target: /root/.activiti/enterprise-license/activiti.lic
+        read_only: true
+
+    ports:
+      - 9999:8080

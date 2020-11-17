@@ -1,0 +1,118 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_KIBANA_VERSION}
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=${ELASTIC_KIBANA_CLUSTER_NAME}
+      - discovery.seed_hosts=es02,es03
+      - cluster.initial_master_nodes=elasticsearch,es02,es03
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - ELASTIC_PASSWORD=${ELASTIC_KIBANA_PASSWORD}
+      - xpack.security.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.license.self_generated.type=basic
+      - bootstrap.memory_lock=true
+      - network.host=0.0.0.0
+    volumes:
+#      - type: bind
+#        source: ./config/elasticsearch.yml
+#        target: /etc/elasticsearch/config/elasticsearch.yml"
+#        read_only: true
+        - elasticData01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elk
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_KIBANA_VERSION}
+    container_name: es02
+    environment:
+      - node.name=es02
+      - cluster.name=${ELASTIC_KIBANA_CLUSTER_NAME}
+      - discovery.seed_hosts=elasticsearch,es03
+      - cluster.initial_master_nodes=elasticsearch,es02,es03
+      - ELASTIC_PASSWORD=${ELASTIC_KIBANA_PASSWORD}
+      - xpack.security.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.license.self_generated.type=basic
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticData02:/usr/share/elasticsearch/data
+    ports:
+      - 9202:9200
+      - 9302:9300
+    networks:
+      - elk
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_KIBANA_VERSION}
+    container_name: es03
+    environment:
+      - node.name=es03
+      - cluster.name=${ELASTIC_KIBANA_CLUSTER_NAME}
+      - discovery.seed_hosts=elasticsearch,es02
+      - cluster.initial_master_nodes=elasticsearch,es02,es03
+      - ELASTIC_PASSWORD=${ELASTIC_KIBANA_PASSWORD}
+      - xpack.security.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.license.self_generated.type=basic
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticData03:/usr/share/elasticsearch/data
+    ports:
+      - 9203:9200
+      - 9303:9300
+    networks:
+      - elk
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_KIBANA_VERSION}
+    container_name: kibana
+    volumes:
+      - type: bind
+        source: ./conf/kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+        read_only: true
+    ports:
+      - 5601:5601
+    environment:
+        - ELASTICSEARCH_URL=http://elasticsearch:9200
+        - ELASTICSEARCH_USERNAME=elastic
+        - ELASTICSEARCH_PASSWORD=${ELASTIC_KIBANA_PASSWORD}
+        - logging.quiet=false
+
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+volumes:
+  elasticData01:
+    driver: local
+  elasticData02:
+    driver: local
+  elasticData03:
+    driver: local
+
+networks:
+  elk:
+    driver: bridge
+

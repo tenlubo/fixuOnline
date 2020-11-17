@@ -1,0 +1,491 @@
+
+dn: ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: organizationalUnit
+ou: BikefrescoPeople
+
+dn: ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: organizationalUnit
+ou: BikefrescoRoles
+
+dn: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: lubo
+cn: Lubo
+sn: Imperial
+mail: lubo@fixu.online
+postalCode: 84102
+street: Vysoka 2
+userPassword: lubo
+
+dn: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: tomas
+cn: Tomáš
+sn: Kapradina
+mail: tomas@fixu.online
+postalCode: 84104
+street: Kolajnicova 4
+userPassword: tomas
+
+dn: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: magda
+cn: Magda
+sn: Dynamicka
+mail: magda@fixu.online
+postalCode: 84105
+street: Smrekova 5
+userPassword: magda
+
+dn: uid=daniela,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: daniela
+cn: Daniela
+sn: Vodovodná
+mail: daniela@fixu.online
+postalCode: 84100
+street: Dunajská 5
+userPassword: daniela
+
+dn: uid=bajkula,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: bajkula
+cn: Bajkula
+sn: Pedálna
+mail: bajkula@fixu.online
+postalCode: 84100
+street: Kremnická 5
+userPassword: bajkula
+
+dn: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: tmax
+cn: Tomáš
+sn: Špeciálny
+mail: tmax@fixu.online
+postalCode: 84105
+street: Katusová 8
+userPassword: tmax
+
+dn: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: juro
+cn: Juro
+sn: Jurovčík
+mail: juro@fixu.online
+postalCode: 84105
+street: Sekulentná 9
+userPassword: juro
+
+dn: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: jonatan
+cn: Jonatan
+sn: Drakonik
+mail: jonatan@fixu.online
+postalCode: 84110
+street: Devinska 9
+userPassword: jonatan
+
+dn: uid=leo,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: leo
+cn: Leonard
+sn: Malorka
+mail: leo@fixu.online
+postalCode: 84105
+street: Palma 9
+userPassword: leo
+
+dn: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: noro
+cn: Norbert
+sn: Kanapa
+mail: noro@fixu.online
+postalCode: 83001
+street: Zohorská 37
+userPassword: noro
+
+dn: uid=monika,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: monika
+cn: Monika
+sn: Košatá
+mail: monika@fixu.online
+postalCode: 85001
+street: Modranská 64
+userPassword: monika
+
+dn: uid=citatel,ou=BikefrescoPeople,dc=fixu,dc=online
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: citatel
+cn: Čitateľ
+sn: Digestor
+mail: citatel@fixu.online
+postalCode: 84111
+street: Plagatova 37
+userPassword: citatel
+
+dn: cn=DMS_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MANAGER
+member: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MARKETING_INZERCIA,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MARKETING_INZERCIA
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MEETINGS_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MEETINGS_MANAGER
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MEETINGS_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MEETINGS_COLLABORATOR
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MEETINGS_CONTRIBUTOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MEETINGS_CONTRIBUTOR
+member: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MEETINGS_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MEETINGS_CONSUMER
+member: uid=leo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_TEAMBUILDING_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_TEAMBUILDING_MANAGER
+member: uid=monika,ou=BikefrescoPeople,dc=fixu,dc=online
+
+
+dn: cn=DMS_TEAMBUILDING_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_TEAMBUILDING_COLLABORATOR
+member: uid=leo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_TEAMBUILDING_CONTRIBUTOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_TEAMBUILDING_CONTRIBUTOR
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_TEAMBUILDING_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_TEAMBUILDING_CONSUMER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MARKETING_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MARKETING_MANAGER
+member: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MARKETING_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MARKETING_COLLABORATOR
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MARKETING_CONTRIBUTOR ,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MARKETING_CONTRIBUTOR
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_MARKETING_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_MARKETING_CONSUMER
+member: uid=citatel,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_SUPPORT_MANAGER ,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_SUPPORT_MANAGER
+member: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_SUPPORT_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_SUPPORT_COLLABORATOR
+member: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_SUPPORT_CONTRIBUTOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_SUPPORT_CONTRIBUTOR
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_SUPPORT_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_SUPPORT_CONSUMER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_REDAKCIA_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_REDAKCIA_MANAGER
+member: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_REDAKCIA_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_REDAKCIA_COLLABORATOR
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_REDAKCIA_CONTRIBUTOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_REDAKCIA_CONTRIBUTOR
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_REDAKCIA_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_REDAKCIA_CONSUMER
+member: uid=citatel,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_MANAGER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_COLLABORATOR
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_CONTRIBUTOR ,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_CONTRIBUTOR
+member: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_CONSUMER
+member: uid=citatel,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_ASSISTANT,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_ASSISTANT
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_APPROVER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_APPROVER
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_INVOICE_ACCOUNTANT,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_INVOICE_ACCOUNTANT
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=ALFRESCO_ADMINISTRATORS,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: ALFRESCO_ADMINISTRATORS
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=ALFRESCO_MODEL_ADMINISTRATORS,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: ALFRESCO_MODEL_ADMINISTRATORS
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=ALFRESCO_SEARCH_ADMINISTRATORS,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: ALFRESCO_SEARCH_ADMINISTRATORS
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=SITE_ADMINISTRATORS,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: SITE_ADMINISTRATORS
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=EMAIL_CONTRIBUTORS,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: EMAIL_CONTRIBUTORS
+member: uid=tomas,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=magda,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_MANAGER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_COLLABORATOR
+member: uid=daniela,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_CONTRIBUTOR ,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_CONTRIBUTOR
+member: uid=jonatan,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_CONSUMER
+member: uid=noro,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_ASSISTANT,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_ASSISTANT
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=daniela,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_APPROVER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_APPROVER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=daniela,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_KAKTUS_INVOICE_ACCOUNTANT,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_KAKTUS_INVOICE_ACCOUNTANT
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=daniela,ou=BikefrescoPeople,dc=fixu,dc=online
+
+
+dn: cn=DMS_BAJKULA_INVOICE_MANAGER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_MANAGER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_BAJKULA_INVOICE_COLLABORATOR,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_COLLABORATOR
+member: uid=bajkula,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_BAJKULA_INVOICE_CONTRIBUTOR ,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_CONTRIBUTOR
+member: uid=tmax,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_BAJKULA_INVOICE_CONSUMER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_CONSUMER
+member: uid=juro,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_BAJKULA_INVOICE_ASSISTANT,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_ASSISTANT
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=bajkula,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_BAJKULA_INVOICE_APPROVER,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_APPROVER
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=bajkula,ou=BikefrescoPeople,dc=fixu,dc=online
+
+dn: cn=DMS_BAJKULA_INVOICE_ACCOUNTANT,ou=BikefrescoRoles,dc=fixu,dc=online
+objectclass: top
+objectclass: groupOfNames
+cn: DMS_BAJKULA_INVOICE_ACCOUNTANT
+member: uid=lubo,ou=BikefrescoPeople,dc=fixu,dc=online
+member: uid=bajkula,ou=BikefrescoPeople,dc=fixu,dc=online
+
+

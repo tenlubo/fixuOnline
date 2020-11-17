@@ -1,0 +1,8 @@
+logging.quiet: true
+elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+elasticsearch.username: ${ELASTICSEARCH_USERNAME}
+elasticsearch.password: ${ELASTICSEARCH_PASSWORD}
+server.host: 0.0.0.0
+xpack.reporting.kibanaServer.hostname: 0.0.0.0
+xpack.monitoring.enabled: true
+xpack.monitoring.kibana.collection.enabled: true

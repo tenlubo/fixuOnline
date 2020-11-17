@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+
+  ldap-debian:
+    image: ldap-debian:development
+    container_name: ldap-debian
+    build:
+      dockerfile: ./Dockerfile
+      context: ./docker
+
+    volumes:
+      - ldap-data-vol:/var/lib/ldap
+      - ldap-config-vol:/etc/ldap
+
+    ports:
+      - 10389:389
+    restart: unless-stopped
+
+volumes:
+  ldap-data-vol:
+    driver: local
+  ldap-config-vol:
+    driver: local

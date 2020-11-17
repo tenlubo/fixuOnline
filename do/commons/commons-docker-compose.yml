@@ -1,0 +1,104 @@
+version: "3.7"
+services:
+    alfresco-pdf-renderer:
+        image: alfresco/alfresco-pdf-renderer:${ALFRESCO_COMMONS_VERSION}
+        environment:
+            JAVA_OPTS: " -Xms${JAVA_XMS} -Xmx${JAVA_XMX}"
+        ports:
+            - ${EXTERNAL_ALFRESCO_PDF_RENDERER_PORT}:8090
+        networks:
+            - commons-net
+
+    imagemagick:
+        image: alfresco/alfresco-imagemagick:${ALFRESCO_COMMONS_VERSION}
+
+        environment:
+            JAVA_OPTS: " -Xms${JAVA_XMS} -Xmx${JAVA_XMX}"
+        ports:
+            - ${EXTERNAL_ALFRESCO_IMAGEMAGICK_PORT}:8090
+        networks:
+            - commons-net
+
+    libreoffice:
+        image: alfresco/alfresco-libreoffice:${ALFRESCO_COMMONS_VERSION}
+        environment:
+            JAVA_OPTS: " -Xms${JAVA_XMS} -Xmx${JAVA_XMX}"
+        ports:
+            - ${EXTERNAL_ALFRESCO_LIBREOFFICE_PORT}:8090
+        networks:
+            - commons-net
+
+    tika:
+        image: alfresco/alfresco-tika:${ALFRESCO_COMMONS_VERSION}
+        environment:
+            JAVA_OPTS: " -Xms${JAVA_XMS} -Xmx${JAVA_XMX}"
+        ports:
+            - ${EXTERNAL_ALFRESCO_TIKA_PORT}:8090
+        networks:
+            - commons-net
+
+    transform-misc:
+        image: alfresco/alfresco-transform-misc:${ALFRESCO_COMMONS_VERSION}
+        environment:
+            JAVA_OPTS: " -Xms${JAVA_XMS} -Xmx${JAVA_XMX}"
+        ports:
+            - ${EXTERNAL_ALFRESCO_TRANSFORM_MISC_PORT}:8090
+        networks:
+            - commons-net
+
+    activemq:
+        image: alfresco/alfresco-activemq:${ACTIVEMQ_VERSION}
+        ports:
+            - ${EXTERNAL_ACTIVEMQ_WEB_CONSOLE_PORT}:8161 # Web Console
+            - ${EXTERNAL_ACTIVEMQ_AMQP_PORT}:5672 # AMQP
+            - ${EXTERNAL_ACTIVEMQ_OPENWIRE_PORT}:61616 # OpenWire
+            - ${EXTERNAL_ACTIVEMQ_STOMP_PORT}:61613 # STOMP
+        networks:
+            - commons-net
+
+    ldap-debian:
+        image: tenlubo/ldap:latest
+        container_name: ldap-debian
+        volumes:
+            - ldap-data-vol:/var/lib/ldap
+            - ldap-config-vol:/etc/ldap
+        ports:
+            - ${EXTERNAL_LDAP_PORT}:389
+        restart: unless-stopped
+        networks:
+            - commons-net
+
+    mariadb:
+        image: library/mariadb:10.5.6
+        container_name: mariadb
+        volumes:
+            - ./mariainit:/docker-entrypoint-initdb.d
+            - bikes-maria-data-volume:/var/lib/mysql
+            - bikes-maria-log-volume:/var/log/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=alfresco
+            - MYSQL_USER=alfresco
+            - MYSQL_PASSWORD=alfresco
+        command: [mysqld, --character-set-server=utf8, --collation-server=utf8_bin, --wait_timeout=28800]
+        ports:
+            - ${EXTERNAL_DATABASE_PORT}:3306
+        networks:
+            - commons-net
+
+volumes:
+    ldap-data-vol:
+        external:
+            name: ldap-data-volume
+    ldap-config-vol:
+        external:
+            name: ldap-config-volume
+    bikes-maria-data-volume:
+        external:
+            name: maria-data-volume
+    bikes-maria-log-volume:
+        external:
+            name: maria-log-volume
+
+networks:
+    commons-net:
+        driver: bridge

@@ -1,0 +1,75 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - ELASTIC_PASSWORD=${ELASTICSEARCH_PASSWORD:-changeme}
+      - xpack.security.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.license.self_generated.type=basic
+      - network.host=0.0.0.0
+    volumes:
+#      - type: bind
+#        source: ./config/elasticsearch.yml
+#        target: /etc/elasticsearch/config/elasticsearch.yml"
+#        read_only: true
+        - elasticData01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - elk
+
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:7.6.2
+#    volumes:
+#      - type: bind
+#        source: ./logstash/pipeline/
+#        target: /usr/share/logstash/pipeline/
+#        read_only: true
+#    ports:
+#      - "5000:5000/tcp"
+#      - "5000:5000/udp"
+#      - "9600:9600"
+#    environment:
+#        - LS_JAVA_OPTS=-Xmx256m -Xms256m
+#        - XPACK_MONITORING_ELASTICSEARCH_URL=http://elasticsearch:9200
+#        - XPACK_MONITORING_ELASTICSEARCH_USERNAME=${ELASTICSEARCH_USERNAME:-elastic}
+#        - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTICSEARCH_PASSWORD:-changeme}
+#    networks:
+#      - elk
+#    depends_on:
+#      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.6.2
+    container_name: kibana
+    volumes:
+      - type: bind
+        source: ./kibana/kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+        read_only: true
+    ports:
+      - 5601:5601
+    environment:
+        - ELASTICSEARCH_URL=http://elasticsearch:9200
+        - ELASTICSEARCH_USERNAME=${ELASTICSEARCH_USERNAME:-elastic}
+        - ELASTICSEARCH_PASSWORD=${ELASTICSEARCH_PASSWORD:-changeme}
+        - logging.quiet=false
+
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+volumes:
+  elasticData01:
+    driver: local
+
+networks:
+  elk:
+    driver: bridge
+
