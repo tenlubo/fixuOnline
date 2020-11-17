@@ -18,11 +18,15 @@ services:
                 -Dsolr.secureComms=none
                 -Dsolr.base.url=/solr
                 -Dindex.subsystem.name=solr6
-                -Dshare.host=127.0.0.1
-                -Dshare.port=80
-                -Dalfresco.host=localhost
-                -Dalfresco.port=8080
-                -Daos.baseUrlOverwrite=http://localhost:8080/alfresco/aos
+                -Dalfresco.context=alfresco
+                -Dalfresco.host=demo.bikefresco.com
+                -Dalfresco.port=443
+                -Dalfresco.protocol=https
+                -Dshare.context=share
+                -Dshare.host=demo.bikefresco.com
+                -Dshare.port=443
+                -Dshare.protocol=https
+                -Daos.baseUrlOverwrite=https://demo.bikefresco.com/alfresco/aos
                 -Dmessaging.broker.url=\"failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true\"
                 -Ddeployment.method=DOCKER_COMPOSE
 
@@ -73,10 +77,10 @@ services:
             JAVA_OPTS: "
                 -Xms512m
                 -Xmx512m
-                -Dalfresco.host=localhost
-                -Dalfresco.port=8080
+                -Dalfresco.host=demo.bikefresco.com
+                -Dalfresco.port=443
                 -Dalfresco.context=alfresco
-                -Dalfresco.protocol=http
+                -Dalfresco.protocol=https
                 "
         ports:
             - ${EXTERNAL_SHARE_PORT}:8080
