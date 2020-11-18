@@ -35,7 +35,7 @@ services:
                 -Dopencmis.servletpath.override=true
                 -Dopencmis.servletpath.value=
                 -Dopencmis.server.override=true
-                -Dopencmis.server.value=\"https://demo.bikefresco.com/\"
+                -Dopencmis.server.value=\"https://demo.bikefresco.com/alfresco/api\"
 
                 -Dsmart.folders.enabled=true
                 -Dsmart.folders.config.type.templates.qname.filter=inv:invoiceFolder
