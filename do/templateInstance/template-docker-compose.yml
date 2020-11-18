@@ -30,6 +30,13 @@ services:
                 -Dmessaging.broker.url=\"failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true\"
                 -Ddeployment.method=DOCKER_COMPOSE
 
+                -Dopencmis.context.override=true
+                -Dopencmis.context.value=
+                -Dopencmis.servletpath.override=true
+                -Dopencmis.servletpath.value=
+                -Dopencmis.server.override=true
+                -Dopencmis.server.value=\"https://demo.alfresco.com/\"
+
                 -Dsmart.folders.enabled=true
                 -Dsmart.folders.config.type.templates.qname.filter=inv:invoiceFolder
 
