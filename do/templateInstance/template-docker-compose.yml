@@ -74,13 +74,15 @@ services:
         environment:
             REPO_HOST: "alfresco"
             REPO_PORT: "8080"
+            CSRF_FILTER_ORIGIN: "https://demo.bikefresco.com.*"
+            CSRF_FILTER_REFERER: "https://demo.bikefresco.com/.*"
             JAVA_OPTS: "
                 -Xms512m
                 -Xmx512m
-                -Dalfresco.host=alfresco
-                -Dalfresco.port=8080
                 -Dalfresco.context=alfresco
-                -Dalfresco.protocol=http
+                -Dalfresco.host=demo.bikefresco.com
+                -Dalfresco.port=443
+                -Dalfresco.protocol=https
                 "
 
         networks:
